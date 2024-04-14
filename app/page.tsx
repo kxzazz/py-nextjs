@@ -1,16 +1,23 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 export default function Home() {
   const [jq, setJq] = useState({});
   const makeApiCall = async () => {
-    const resp = await fetch('/api/python');
-    setJq(resp.json());
+    const data = await (await fetch("/api/python")).json();
+    //console.log(await (await fetch('/api/python')).json())
+    setJq(data);
   };
 
+  console.log("MOUNT");
+
   return (
-    <>
-      <button onClick={makeApiCall}>make call</button>
-      <div>{JSON.stringify(jq)}</div>
-    </>
+    <div className="flex flex-col justify-center items-center gap-2">
+      <button
+        onClick={makeApiCall}
+        className="text-xl bg-blue-500 hover:bg-blue-700 font-bold rounded p-2"      >
+        Get rESPonse FRom PYTHON 🐍
+      </button>
+      <div className="text-2xl">{JSON.stringify(jq)}</div>
+    </div>
   );
 }

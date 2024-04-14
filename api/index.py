@@ -5,4 +5,6 @@ app = FastAPI()
 @app.get("/api/python")
 def hello_world():
     print("HIT!!")
-    return {"message": "Hello World"}
+    d = {"message": "Hello World"}
+    print(d)
+    return d
