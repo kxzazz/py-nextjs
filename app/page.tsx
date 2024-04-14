@@ -4,11 +4,8 @@ export default function Home() {
   const [jq, setJq] = useState({});
   const makeApiCall = async () => {
     const data = await (await fetch("/api/python")).json();
-    //console.log(await (await fetch('/api/python')).json())
     setJq(data);
   };
-
-  console.log("MOUNT");
 
   return (
     <div className="flex flex-col justify-center items-center gap-2">
